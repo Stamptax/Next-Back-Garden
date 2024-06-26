@@ -2,6 +2,7 @@ import NavBar from "../../component/NavBar";
 import Post from "../../component/Post";
 import { fetchPosts } from "@/actions";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 const SakanaWidget = dynamic(() => import("@/component/Sakana"), {
   ssr: false,
 });
@@ -24,15 +25,20 @@ export default async function MyChillingCorner() {
       <NavBar />
       <div className="md:mt-[60px] mt-[30px] w-1/2 max-w-screen-xl items-center flex flex-col gap-3">
         {posts.map((post) => (
-          <div className="pb-12" key={post.id}>
+          <Link
+            className="pb-12"
+            key={post.id}
+            href={`my-chilling-corner/${post.id}`}
+          >
             <Post
               key={post.id}
+              author={post.author}
               title={post.title}
               content={post.content}
               file_url={post.file_url}
               posted_at={post.posted_at}
             />
-          </div>
+          </Link>
         ))}
       </div>
       <SakanaWidget />
