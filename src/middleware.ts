@@ -5,6 +5,6 @@ export function middleware(request: NextRequest) {
   const verify = request.cookies.get("Gardener");
   const url = request.url;
   if (!verify && url.includes("/dashboard")) {
-    return NextResponse.redirect("https://next-back-garden-delta.vercel.app/");
+    return NextResponse.redirect("https://next-back-garden.vercel.app/");
   }
 }
