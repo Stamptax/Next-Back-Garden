@@ -24,7 +24,7 @@ export default async function MyChillingCorner() {
       <NavBar />
       <div className="md:mt-[60px] mt-[30px] w-1/2 max-w-screen-xl items-center flex flex-col gap-3">
         {posts.map((post) => (
-          <div className="pb-12">
+          <div className="pb-12" key={post.id}>
             <Post
               key={post.id}
               title={post.title}
