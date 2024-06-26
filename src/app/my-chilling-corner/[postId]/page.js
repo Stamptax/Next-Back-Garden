@@ -31,7 +31,7 @@ export default async function DetailedPost({ params }) {
     <div className="flex flex-col items-center bg-lime-50 min-h-dvh gap-10">
       <NavBar />
       <div className="text-wrap w-2/3 max-w-screen-lg flex flex-col gap-3">
-        <h1 className="text-xl font-extrabold">{thePost.title}</h1>
+        <h1 className="text-2xl md:text-4xl font-extrabold">{thePost.title}</h1>
         <div className="flex items-end justify-between ">
           <span className="text-emerald-700">{thePost.author}</span>
           <span className="text-gray-500">{thePost.posted_at}</span>

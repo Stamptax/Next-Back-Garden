@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { Separator } from "@/components/ui/separator";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -62,9 +63,11 @@ export default function NavBar() {
           <Link className="text-gray-700" href="/">
             Home
           </Link>
+          <Separator className="bg-[#d9dfca]" />
           <Link className="text-gray-700" href="/portfolio">
             Portfolio
           </Link>
+          <Separator className="bg-[#d9dfca]" />
           <Link className="text-gray-700" href="/my-chilling-corner">
             My Chilling Corner
           </Link>
