@@ -3,6 +3,8 @@ import Post from "../../component/Post";
 import { fetchPosts } from "@/actions";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Suspense } from "react";
 const SakanaWidget = dynamic(() => import("@/component/Sakana"), {
   ssr: false,
 });
@@ -30,14 +32,20 @@ export default async function MyChillingCorner() {
             key={post.id}
             href={`my-chilling-corner/${post.id}`}
           >
-            <Post
-              key={post.id}
-              author={post.author}
-              title={post.title}
-              content={post.content}
-              file_url={post.file_url}
-              posted_at={post.posted_at}
-            />
+            <Suspense
+              fallback={
+                <Skeleton className="min-w-[300px] h-[290px] rounded-lg w-full bg-[#f1f7e4]" />
+              }
+            >
+              <Post
+                key={post.id}
+                author={post.author}
+                title={post.title}
+                content={post.content}
+                file_url={post.file_url}
+                posted_at={post.posted_at}
+              />
+            </Suspense>
           </Link>
         ))}
       </div>
