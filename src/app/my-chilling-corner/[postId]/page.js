@@ -1,6 +1,8 @@
 import { supabase } from "@/lib/client";
 import NavBar from "@/component/NavBar";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
+import BackArrow from "@/component/BackArrow";
 export default async function DetailedPost({ params }) {
   const { postId } = params;
   async function fetchThePost(postId) {
@@ -31,6 +33,12 @@ export default async function DetailedPost({ params }) {
     <div className="flex flex-col items-center bg-lime-50 min-h-dvh gap-10">
       <NavBar />
       <div className="text-wrap w-2/3 max-w-screen-lg flex flex-col gap-3">
+        <Link
+          href="/my-chilling-corner"
+          className="self-start hover:bg-[#f6f5dd] w-10 py-3 flex justify-center rounded-lg"
+        >
+          <BackArrow colour={"#e7e8ca"} />
+        </Link>
         <h1 className="text-2xl md:text-4xl font-extrabold">{thePost.title}</h1>
         <div className="flex items-end justify-between ">
           <span className="text-emerald-700">{thePost.author}</span>

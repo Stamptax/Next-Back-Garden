@@ -31,7 +31,8 @@
     "src/middleware.ts",
     "src/component/LoginForm.ts",
     "src/component/CreateAPost.ts",
-    "src/component/PostManagement.js"
+    "src/component/PostManagement.js",
+    "src/component/BackArrow.js"
   ],
   "exclude": ["node_modules"]
 }

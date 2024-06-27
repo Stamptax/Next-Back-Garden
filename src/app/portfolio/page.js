@@ -2,6 +2,7 @@ import NavBar from "../../component/NavBar";
 import ProjectCard from "../../component/ProjectCard";
 import "animate.css";
 import { Separator } from "@/components/ui/separator";
+import Footer from "@/component/Footer";
 export default function Portfolio() {
   return (
     <div className={`flex flex-col items-center bg-lime-50 md:gap-40 gap-32`}>
@@ -52,30 +53,7 @@ export default function Portfolio() {
           titleColour="text-blue-300"
         />
       </div>
-
-      <footer
-        className={`flex md:gap-48 gap-10 justify-center items-center bg-orange-100 h-48 w-full`}
-      >
-        <div className="LinkedIn">
-          <a href="https://linkedin.com/in/morry-yu-690027301">
-            <img
-              className="w-7"
-              src="/resources/linkedin-icon.svg"
-              alt="linkedin-icon"
-            />
-          </a>
-        </div>
-        <div className="Github">
-          <a href="https://github.com/Stamptax">
-            <img className="w-7" src="/resources/github-icon.svg" alt="" />
-          </a>
-        </div>
-        <div className="Email">
-          <a href="mailt0:morry.haosenyu@gmail.com">
-            <img className="w-7" src="/resources/google-gmail.svg" alt="" />
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
