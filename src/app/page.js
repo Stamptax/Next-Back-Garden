@@ -70,6 +70,16 @@ export default function Home() {
             src="/resources/django-icon.svg"
             alt="html-icon"
           />
+          <img
+            className="w-10 h-10"
+            src="/resources/nextjs.svg"
+            alt="html-icon"
+          />
+          <img
+            className="w-10 h-10"
+            src="/resources/supabase.svg"
+            alt="html-icon"
+          />
         </div>
       </div>
       <footer
