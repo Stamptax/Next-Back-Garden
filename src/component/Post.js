@@ -32,10 +32,11 @@ export default function Post({
         ? file_url.map((url, index) => (
             <Image
               key={index}
-              className="overflow-hidden bg-grey w-full max-h-[150px] max-w-[150px] pb-12 px-12"
+              className="overflow-hidden bg-grey w-full object-contain pb-12 px-12"
               src={url}
-              height={2000}
-              width={2000}
+              height={200}
+              width={200}
+              quality={100}
             />
           ))
         : null}

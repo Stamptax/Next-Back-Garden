@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/client";
 import NavBar from "@/component/NavBar";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 import Link from "next/link";
 import BackArrow from "@/component/BackArrow";
 export default async function DetailedPost({ params }) {
@@ -49,6 +50,20 @@ export default async function DetailedPost({ params }) {
       </div>
       <article className="text-wrap w-2/3 max-w-screen-lg">
         <p className="text-gray-700 ">{thePost.content}</p>
+        <div>
+          {thePost.file_url && thePost.file_url.length > 0
+            ? thePost.file_url.map((url, index) => (
+                <Image
+                  key={index}
+                  className="overflow-hidden bg-grey w-full object-contain py-12 px-12"
+                  src={url}
+                  height={200}
+                  width={200}
+                  quality={100}
+                />
+              ))
+            : null}
+        </div>
       </article>
     </div>
   );
