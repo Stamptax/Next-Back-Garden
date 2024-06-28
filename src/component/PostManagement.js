@@ -1,7 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { fetchPosts } from "@/actions";
+import { fetchAPost } from "@/actions";
 import { deletePost } from "@/actions/delete-post";
+import { deleteFiles } from "@/actions/delete-files";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 export default function PostManagement() {
@@ -24,9 +26,12 @@ export default function PostManagement() {
   }, []);
 
   const handleDeletePost = async (id) => {
+    const post = await fetchAPost(id);
+    if (post[0].file_url) {
+      await deleteFiles(post[0].file_url);
+    }
     await deletePost(id);
     router.refresh();
-    router.push("/my-chilling-corner");
     setPosts(posts.filter((post) => post.id !== id));
   };
   return (
