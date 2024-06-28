@@ -15,6 +15,7 @@ export default async function DetailedPost({ params }) {
       console.error("Error fetching post:", error);
       return null;
     }
+    console.log("data", data);
     return data;
   }
   const response = await fetchThePost(postId);

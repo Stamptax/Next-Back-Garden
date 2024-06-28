@@ -16,7 +16,7 @@ export default function Post({
   };
   const truncatedContent = truncateFunction(content, maxLength);
   return (
-    <div className="bg-white shadow-md min-w-[300px] rounded-lg w-full flex items-center flex-col">
+    <div className="bg-white shadow-md md:min-w-[600px] xl:min-w-[820px]  min-w-[300px] rounded-lg w-full flex items-center flex-col">
       <div className="text-wrap w-full flex flex-col gap-5 p-12">
         <div className="flex justify-between items-center gap-10 overflow-scroll">
           <div className="flex flex-col ">
@@ -28,10 +28,17 @@ export default function Post({
         <Separator className="w-full my-4 bg-gray-300" />
         <p className="text-gray-600">{truncatedContent}</p>
       </div>
-      <Image
-        className="overflow-hidden bg-grey w-full max-h-[150px] max-w-[150px] pb-12 px-12"
-        src=""
-      />
+      {file_url && file_url.length > 0
+        ? file_url.map((url, index) => (
+            <Image
+              key={index}
+              className="overflow-hidden bg-grey w-full max-h-[150px] max-w-[150px] pb-12 px-12"
+              src={url}
+              height={2000}
+              width={2000}
+            />
+          ))
+        : null}
     </div>
   );
 }

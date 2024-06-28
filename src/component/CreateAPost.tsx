@@ -7,7 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { createPost } from "@/actions";
 import { Spinner } from "@nextui-org/react";
+import { uploadFiles } from "@/actions/upload-files";
 export default function CreateAPost() {
+  const [files, setFiles] = useState<File[]>([]);
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [title, setTitle] = useState("");
@@ -15,11 +17,13 @@ export default function CreateAPost() {
   async function handleCreatePost(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsLoading(true);
-    const posted = await createPost(title, content);
+    const file_url = await uploadFiles(files);
+    const posted = await createPost(title, content, file_url);
     if (posted) {
       setIsLoading(false);
       setTitle("");
       setContent("");
+      setFiles([]);
       router.push("/my-chilling-corner");
     } else {
       alert("Failed to create post");
@@ -37,6 +41,17 @@ export default function CreateAPost() {
               name="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div>
+            <Label htmlFor="files">Files</Label>
+            <Input
+              name="files"
+              type="file"
+              multiple
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setFiles(e.target.files ? Array.from(e.target.files) : [])
+              }
             />
           </div>
           <div>
